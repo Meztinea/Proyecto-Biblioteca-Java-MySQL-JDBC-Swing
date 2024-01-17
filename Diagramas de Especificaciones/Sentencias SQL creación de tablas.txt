@@ -1,2 +1,67 @@
 Sentencias SQL necesarias para crear la base de datos y las tablas
 
+CREATE DATABASE biblioteca;
+
+
+USE biblioteca;
+
+
+CREATE TABLE libros (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(150),
+    autor VARCHAR(150),
+    editorial VARCHAR(150),
+    portada BLOB,
+    ejemplaresDisponibles INT 
+) ENGINE=InnoDB;
+
+
+CREATE TABLE historietas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(150),
+    autor VARCHAR(150),
+    editorial VARCHAR(150),
+    numeroEdicion VARCHAR(4),
+    portada BLOB,
+    ejemplaresDisponibles INT 
+) ENGINE=InnoDB;
+
+
+CREATE TABLE usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255),
+    telefono VARCHAR(10),
+    email VARCHAR(155),
+    fotografia BLOB 
+) ENGINE=InnoDB;
+
+
+CREATE TABLE devoluciones (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    fecha DATETIME,
+    observaciones VARCHAR(455)
+) ENGINE=InnoDB;
+
+
+CREATE TABLE prestamosLibros (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    fecha DATETIME,
+    idUsuario INT,
+    idLibro INT,
+    idDevolucion INT,
+    FOREIGN KEY (idUsuario) REFERENCES usuarios(id),
+    FOREIGN KEY (idLibro) REFERENCES libros(id),
+    FOREIGN KEY (idDevolucion) REFERENCES devoluciones(id)
+) ENGINE=InnoDB;
+
+
+CREATE TABLE prestamosHistorietas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    fecha DATETIME,
+    idUsuario INT,
+    idHistorieta INT,
+    idDevolucion INT,
+    FOREIGN KEY (idUsuario) REFERENCES usuarios(id),
+    FOREIGN KEY (idHistorieta) REFERENCES historietas(id),
+    FOREIGN KEY (idDevolucion) REFERENCES devoluciones(id)
+) ENGINE=InnoDB;
