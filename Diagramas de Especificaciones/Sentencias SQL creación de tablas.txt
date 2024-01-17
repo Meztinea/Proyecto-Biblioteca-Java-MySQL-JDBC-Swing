@@ -1,0 +1,2 @@
+Sentencias SQL necesarias para crear la base de datos y las tablas
+
