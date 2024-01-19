@@ -1,6 +1,6 @@
 # Biblioteca Pública Municipal
 
-## Aplicación de escritorio que gestiona libros e historietas, usuarios, préstamos del material y sus respectivas devoluciones
+## Aplicación de escritorio que gestiona libros e historietas, usuarios, préstamos del material y sus respectivas devoluciones.
 
 ### Características principales
 
