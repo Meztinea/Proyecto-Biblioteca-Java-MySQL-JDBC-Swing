@@ -4,6 +4,8 @@
  */
 package mx.com.biblioteca.igu;
 
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 /**
  *
  * @author Raquel Martínez
@@ -26,6 +28,7 @@ public class AgregarLibro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        chooserPortadaLibro = new javax.swing.JFileChooser();
         panelAgregarLibro = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -39,9 +42,13 @@ public class AgregarLibro extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         bttSeleccionarPortadaLibro = new javax.swing.JButton();
         txtRutaPortadaLibro = new javax.swing.JTextField();
+        bttSeleccionarPortadaLibro1 = new javax.swing.JButton();
+        bttSeleccionarPortadaLibro2 = new javax.swing.JButton();
+
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos de imagen", "jpg", "jpeg", "png", "gif");
+        chooserPortadaLibro.setFileFilter(filtro);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(600, 400));
 
         panelAgregarLibro.setPreferredSize(new java.awt.Dimension(600, 400));
 
@@ -73,8 +80,33 @@ public class AgregarLibro extends javax.swing.JFrame {
 
         bttSeleccionarPortadaLibro.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         bttSeleccionarPortadaLibro.setText("Seleccionar");
+        bttSeleccionarPortadaLibro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttSeleccionarPortadaLibroActionPerformed(evt);
+            }
+        });
 
         txtRutaPortadaLibro.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+
+        bttSeleccionarPortadaLibro1.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        bttSeleccionarPortadaLibro1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/boton-Guardar.png"))); // NOI18N
+        bttSeleccionarPortadaLibro1.setText("  Guardar");
+        bttSeleccionarPortadaLibro1.setPreferredSize(new java.awt.Dimension(114, 40));
+        bttSeleccionarPortadaLibro1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttSeleccionarPortadaLibro1ActionPerformed(evt);
+            }
+        });
+
+        bttSeleccionarPortadaLibro2.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        bttSeleccionarPortadaLibro2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/boton-Limpiar.png"))); // NOI18N
+        bttSeleccionarPortadaLibro2.setText("Limpiar");
+        bttSeleccionarPortadaLibro2.setPreferredSize(new java.awt.Dimension(114, 40));
+        bttSeleccionarPortadaLibro2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttSeleccionarPortadaLibro2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelAgregarLibroLayout = new javax.swing.GroupLayout(panelAgregarLibro);
         panelAgregarLibro.setLayout(panelAgregarLibroLayout);
@@ -83,26 +115,31 @@ public class AgregarLibro extends javax.swing.JFrame {
             .addGroup(panelAgregarLibroLayout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(panelAgregarLibroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
                     .addGroup(panelAgregarLibroLayout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addGap(18, 18, 18)
                         .addComponent(txtEjemplaresDisponiblesLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel1)
-                    .addGroup(panelAgregarLibroLayout.createSequentialGroup()
-                        .addGroup(panelAgregarLibroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5))
-                        .addGap(25, 25, 25)
-                        .addGroup(panelAgregarLibroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtEditorialLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtAutorLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTituloLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panelAgregarLibroLayout.createSequentialGroup()
-                                .addComponent(bttSeleccionarPortadaLibro)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtRutaPortadaLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(panelAgregarLibroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(panelAgregarLibroLayout.createSequentialGroup()
+                            .addComponent(bttSeleccionarPortadaLibro1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(bttSeleccionarPortadaLibro2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelAgregarLibroLayout.createSequentialGroup()
+                            .addGroup(panelAgregarLibroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel5))
+                            .addGap(25, 25, 25)
+                            .addGroup(panelAgregarLibroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(panelAgregarLibroLayout.createSequentialGroup()
+                                    .addComponent(bttSeleccionarPortadaLibro)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(txtRutaPortadaLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtTituloLibro)
+                                .addComponent(txtAutorLibro)
+                                .addComponent(txtEditorialLibro)))))
                 .addContainerGap(45, Short.MAX_VALUE))
         );
         panelAgregarLibroLayout.setVerticalGroup(
@@ -131,7 +168,11 @@ public class AgregarLibro extends javax.swing.JFrame {
                 .addGroup(panelAgregarLibroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(txtEjemplaresDisponiblesLibros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(110, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addGroup(panelAgregarLibroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bttSeleccionarPortadaLibro1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bttSeleccionarPortadaLibro2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -152,10 +193,34 @@ public class AgregarLibro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void bttSeleccionarPortadaLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttSeleccionarPortadaLibroActionPerformed
+        // Muestra la ventaja del buscador de archivos
+        int resultado = chooserPortadaLibro.showOpenDialog(AgregarLibro.this);
+        
+        // Verifica si el usuario seleccionó un archivo
+        if (resultado == chooserPortadaLibro.APPROVE_OPTION) {
+            // Obtiene y actualiza la ruta de la portada seleccionada
+            String portadaSeleccionadaPath = chooserPortadaLibro.getSelectedFile().getAbsolutePath();
+            txtRutaPortadaLibro.setText(portadaSeleccionadaPath);
+        }
+        
+    }//GEN-LAST:event_bttSeleccionarPortadaLibroActionPerformed
+
+    private void bttSeleccionarPortadaLibro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttSeleccionarPortadaLibro1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bttSeleccionarPortadaLibro1ActionPerformed
+
+    private void bttSeleccionarPortadaLibro2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttSeleccionarPortadaLibro2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bttSeleccionarPortadaLibro2ActionPerformed
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bttSeleccionarPortadaLibro;
+    private javax.swing.JButton bttSeleccionarPortadaLibro1;
+    private javax.swing.JButton bttSeleccionarPortadaLibro2;
+    private javax.swing.JFileChooser chooserPortadaLibro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
