@@ -43,7 +43,7 @@ public class AgregarLibro extends javax.swing.JFrame {
         bttSeleccionarPortadaLibro = new javax.swing.JButton();
         txtRutaPortadaLibro = new javax.swing.JTextField();
         bttSeleccionarPortadaLibro1 = new javax.swing.JButton();
-        bttSeleccionarPortadaLibro2 = new javax.swing.JButton();
+        bttLimpiarAgregarLibro = new javax.swing.JButton();
 
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos de imagen", "jpg", "jpeg", "png", "gif");
         chooserPortadaLibro.setFileFilter(filtro);
@@ -98,13 +98,13 @@ public class AgregarLibro extends javax.swing.JFrame {
             }
         });
 
-        bttSeleccionarPortadaLibro2.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        bttSeleccionarPortadaLibro2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/boton-Limpiar.png"))); // NOI18N
-        bttSeleccionarPortadaLibro2.setText("Limpiar");
-        bttSeleccionarPortadaLibro2.setPreferredSize(new java.awt.Dimension(114, 40));
-        bttSeleccionarPortadaLibro2.addActionListener(new java.awt.event.ActionListener() {
+        bttLimpiarAgregarLibro.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        bttLimpiarAgregarLibro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/boton-Limpiar.png"))); // NOI18N
+        bttLimpiarAgregarLibro.setText("Limpiar");
+        bttLimpiarAgregarLibro.setPreferredSize(new java.awt.Dimension(114, 40));
+        bttLimpiarAgregarLibro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bttSeleccionarPortadaLibro2ActionPerformed(evt);
+                bttLimpiarAgregarLibroActionPerformed(evt);
             }
         });
 
@@ -124,7 +124,7 @@ public class AgregarLibro extends javax.swing.JFrame {
                         .addGroup(panelAgregarLibroLayout.createSequentialGroup()
                             .addComponent(bttSeleccionarPortadaLibro1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
-                            .addComponent(bttSeleccionarPortadaLibro2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(bttLimpiarAgregarLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelAgregarLibroLayout.createSequentialGroup()
                             .addGroup(panelAgregarLibroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel2)
@@ -171,7 +171,7 @@ public class AgregarLibro extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(panelAgregarLibroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bttSeleccionarPortadaLibro1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bttSeleccionarPortadaLibro2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bttLimpiarAgregarLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
@@ -210,16 +210,23 @@ public class AgregarLibro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_bttSeleccionarPortadaLibro1ActionPerformed
 
-    private void bttSeleccionarPortadaLibro2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttSeleccionarPortadaLibro2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bttSeleccionarPortadaLibro2ActionPerformed
+    private void bttLimpiarAgregarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttLimpiarAgregarLibroActionPerformed
+        limpiarPantalla();
+    }//GEN-LAST:event_bttLimpiarAgregarLibroActionPerformed
 
+    private void limpiarPantalla() {
+        txtTituloLibro.setText("");
+        txtAutorLibro.setText("");
+        txtEditorialLibro.setText("");
+        txtRutaPortadaLibro.setText("");
+        txtEjemplaresDisponiblesLibros.setText("");
+    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bttLimpiarAgregarLibro;
     private javax.swing.JButton bttSeleccionarPortadaLibro;
     private javax.swing.JButton bttSeleccionarPortadaLibro1;
-    private javax.swing.JButton bttSeleccionarPortadaLibro2;
     private javax.swing.JFileChooser chooserPortadaLibro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -69,7 +69,7 @@
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="bttSeleccionarPortadaLibro1" min="-2" pref="150" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="bttSeleccionarPortadaLibro2" min="-2" pref="150" max="-2" attributes="0"/>
+                              <Component id="bttLimpiarAgregarLibro" min="-2" pref="150" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -130,7 +130,7 @@
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="bttSeleccionarPortadaLibro1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="bttSeleccionarPortadaLibro2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="bttLimpiarAgregarLibro" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="40" max="32767" attributes="0"/>
               </Group>
@@ -249,7 +249,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bttSeleccionarPortadaLibro1ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="bttSeleccionarPortadaLibro2">
+        <Component class="javax.swing.JButton" name="bttLimpiarAgregarLibro">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="16" style="0"/>
@@ -263,7 +263,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bttSeleccionarPortadaLibro2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bttLimpiarAgregarLibroActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
