@@ -2,6 +2,7 @@
 package mx.com.biblioteca.igu;
 
 import javax.swing.filechooser.FileNameExtensionFilter;
+import mx.com.biblioteca.logica.ControladoraLogica;
 
 /**
  *
@@ -9,10 +10,12 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class AgregarLibro extends javax.swing.JFrame {
 
+    ControladoraLogica controladoraLogica;
     /**
      * Creates new form AgregarLibro
      */
     public AgregarLibro() {
+        controladoraLogica = new ControladoraLogica();
         initComponents();
     }
 
@@ -212,7 +215,7 @@ public class AgregarLibro extends javax.swing.JFrame {
         String ejemplaresDisponibles = txtEjemplaresDisponiblesLibros.getText();
         
         // Envía los datos del formulario a la lógica
-        
+        controladoraLogica.guardarLibro(titulo, autor, editorial, rutaPortada, ejemplaresDisponibles);
         
         // Limpia el formulario despues de guardarlos en la BD
         limpiarFormulario();
