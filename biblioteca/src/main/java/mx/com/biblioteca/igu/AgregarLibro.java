@@ -1,6 +1,10 @@
 
 package mx.com.biblioteca.igu;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import mx.com.biblioteca.logica.ControladoraLogica;
 
@@ -214,8 +218,12 @@ public class AgregarLibro extends javax.swing.JFrame {
         String rutaPortada = txtRutaPortadaLibro.getText();
         String ejemplaresDisponibles = txtEjemplaresDisponiblesLibros.getText();
         
-        // Envía los datos del formulario a la lógica
-        controladoraLogica.guardarLibro(titulo, autor, editorial, rutaPortada, ejemplaresDisponibles);
+        try {
+            // Envía los datos del formulario a capa de la lógica
+            controladoraLogica.guardarLibro(titulo, autor, editorial, rutaPortada, ejemplaresDisponibles);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(panelAgregarLibro, "Error al leer la portada.");
+        }
         
         // Limpia el formulario despues de guardarlos en la BD
         limpiarFormulario();
