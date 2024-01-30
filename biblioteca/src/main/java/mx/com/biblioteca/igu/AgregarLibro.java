@@ -2,8 +2,7 @@
 package mx.com.biblioteca.igu;
 
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import mx.com.biblioteca.logica.ControladoraLogica;
@@ -223,10 +222,15 @@ public class AgregarLibro extends javax.swing.JFrame {
             controladoraLogica.guardarLibro(titulo, autor, editorial, rutaPortada, ejemplaresDisponibles);
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(panelAgregarLibro, "Error al leer la portada.");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(panelAgregarLibro, "Error con la Base de Datos.");
         }
         
         // Limpia el formulario despues de guardarlos en la BD
         limpiarFormulario();
+        
+        // Informa al usuario que se realizó exitosamente
+        JOptionPane.showMessageDialog(panelAgregarLibro, "Libro guardado.");
     }//GEN-LAST:event_bttGuardarAgregarLibroActionPerformed
 
     private void bttLimpiarAgregarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttLimpiarAgregarLibroActionPerformed

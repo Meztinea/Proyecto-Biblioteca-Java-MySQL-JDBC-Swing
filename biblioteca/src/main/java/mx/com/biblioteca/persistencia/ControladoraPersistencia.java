@@ -1,6 +1,7 @@
 
 package mx.com.biblioteca.persistencia;
 
+import java.sql.SQLException;
 import mx.com.biblioteca.logica.Libro;
 
 /**
@@ -9,7 +10,9 @@ import mx.com.biblioteca.logica.Libro;
  */
 public class ControladoraPersistencia {
     
-    public void guardarLibro(Libro libro) {
-        
+    LibroP libroP = new LibroP();
+    
+    public void guardarLibro(Libro libro) throws SQLException {
+        libroP.guardar(libro);
     }
 }

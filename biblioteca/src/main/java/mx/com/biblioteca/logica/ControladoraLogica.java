@@ -2,6 +2,7 @@
 package mx.com.biblioteca.logica;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import mx.com.biblioteca.persistencia.ControladoraPersistencia;
 import mx.com.biblioteca.utilitarias.ConversorImagen;
 
@@ -14,7 +15,7 @@ public class ControladoraLogica {
     ControladoraPersistencia controladoraPersistencia = new ControladoraPersistencia();
     
     public void guardarLibro(String titulo, String autor, String editorial, 
-            String rutaPortada, String ejemplaresDisponibles) throws IOException {
+            String rutaPortada, String ejemplaresDisponibles) throws IOException, SQLException {
         
         // Convierte los datos recibidos a los datos necesarios para la BD
         int ejemplares = Integer.parseInt(ejemplaresDisponibles);
