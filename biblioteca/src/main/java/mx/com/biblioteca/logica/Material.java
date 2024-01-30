@@ -27,6 +27,15 @@ public class Material {
         this.ejemplaresDisponibles = ejemplaresDisponibles;
     }
     
+    public Material(String titulo, String autor, String editorial, 
+            byte[] portada, int ejemplaresDisponibles){
+        this.titulo = titulo;
+        this.autor = autor;
+        this.editorial = editorial;
+        this.portada = portada;
+        this.ejemplaresDisponibles = ejemplaresDisponibles;
+    }
+    
     public void setId(int id) {
         this.id = id;
     }
