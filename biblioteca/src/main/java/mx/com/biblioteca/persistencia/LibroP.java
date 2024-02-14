@@ -11,7 +11,7 @@ import mx.com.biblioteca.logica.Libro;
  * @author Raquel Martínez
  */
 public class LibroP {
-    
+
     public void guardar(Libro libro) throws SQLException{
         Connection conexionBD = new ConexionBD().crearConexion();
         
@@ -27,5 +27,6 @@ public class LibroP {
   
         pstmt.execute();
         pstmt.close();
+        conexionBD.close();
     }
 }

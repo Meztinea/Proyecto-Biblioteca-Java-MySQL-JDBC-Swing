@@ -4,6 +4,7 @@
  */
 package mx.com.biblioteca.igu;
 
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Raquel Martínez
@@ -30,10 +31,14 @@ public class Libros extends javax.swing.JFrame {
         bttAgregarLibro = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbLibros = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(800, 600));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 600));
 
@@ -48,18 +53,7 @@ public class Libros extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         jButton2.setText("Modificar Libro");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbLibros);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -111,13 +105,33 @@ public class Libros extends javax.swing.JFrame {
         agregarlibro.setLocationRelativeTo(null);
     }//GEN-LAST:event_bttAgregarLibroActionPerformed
 
-    
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        cargarTabla();
+    }//GEN-LAST:event_formWindowOpened
 
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bttAgregarLibro;
     private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tbLibros;
     // End of variables declaration//GEN-END:variables
+
+    private void cargarTabla(){
+        // Define el modelo de la tabla - columnas, filas y configuración
+        DefaultTableModel modelo = new DefaultTableModel(){
+            // Evita que las columnas y tablas sean editables
+            public boolean isCellEditable(int row, int column) {
+            return false;
+            }
+        };
+        
+        // Define los títulos de las columnas - las asigna al modelo de la tabla
+        String titulos[] = {"Id", "Titulo", "Autor", "Editorial", "Ejemplares"};
+        modelo.setColumnIdentifiers(titulos);
+        
+        // Asigna el modelo de tabla a la tabla correspondiente
+        tbLibros.setModel(modelo);
+    }
 }
