@@ -5,13 +5,25 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import mx.com.biblioteca.logica.Libro;
-
+import java.sql.ResultSet;
 /**
  *
  * @author Raquel Martínez
  */
 public class LibroP {
 
+    public static ResultSet consultarLibros() throws SQLException {
+        Connection conexionBD = new ConexionBD().crearConexion();
+        
+        String sql = "SELECT id, titulo, autor, editorial, ejemplaresDisponibles FROM libros";
+        PreparedStatement pstmt = conexionBD.prepareStatement(sql);
+        ResultSet rs = pstmt.executeQuery();
+        
+        pstmt.close();
+        conexionBD.close();
+        return rs;
+    }
+    
     public void guardar(Libro libro) throws SQLException{
         Connection conexionBD = new ConexionBD().crearConexion();
         
