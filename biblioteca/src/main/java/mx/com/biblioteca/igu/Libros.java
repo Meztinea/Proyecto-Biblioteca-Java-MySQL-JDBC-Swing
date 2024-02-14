@@ -139,9 +139,6 @@ public class Libros extends javax.swing.JFrame {
         String titulos[] = {"Id", "Titulo", "Autor", "Editorial", "Ejemplares"};
         modelo.setColumnIdentifiers(titulos);
         
-        // Asigna el modelo de tabla a la tabla correspondiente
-        tbLibros.setModel(modelo);
-        
         // Crea la lista de objetos que son traídos de la base de datos
         List<Libro> libros = new ArrayList<>();
         
@@ -153,7 +150,10 @@ public class Libros extends javax.swing.JFrame {
         }
         
         for (Libro lib: libros) {
-            System.out.println(lib.getTitulo() + " " + lib.getAutor());
+            modelo.addRow(new Object[]{lib.getId(), lib.getTitulo(), lib.getAutor(), lib.getEditorial(), lib.getEjemplaresDisponibles()});
         }
+         
+        // Asigna el modelo de tabla a la tabla correspondiente
+        tbLibros.setModel(modelo);
     }
 }
