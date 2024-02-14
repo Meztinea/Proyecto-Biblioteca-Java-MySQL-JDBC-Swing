@@ -3,7 +3,7 @@ package mx.com.biblioteca.persistencia;
 
 import java.sql.SQLException;
 import mx.com.biblioteca.logica.Libro;
-import java.sql.ResultSet;
+import java.util.List;
 /**
  *
  * @author Raquel Martínez
@@ -12,7 +12,7 @@ public class ControladoraPersistencia {
     
     LibroP libroP = new LibroP();
     
-    public ResultSet consultarLibros() throws SQLException {
+    public List<Libro> consultarLibros() throws SQLException {
         // Enviar el tipo resulset a la lógica
         return LibroP.consultarLibros();
     }

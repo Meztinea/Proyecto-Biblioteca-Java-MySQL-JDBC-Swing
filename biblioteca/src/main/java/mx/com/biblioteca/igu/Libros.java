@@ -4,17 +4,25 @@
  */
 package mx.com.biblioteca.igu;
 
+import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
+import java.util.List;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import mx.com.biblioteca.logica.ControladoraLogica;
+import mx.com.biblioteca.logica.Libro;
 /**
  *
  * @author Raquel Martínez
  */
 public class Libros extends javax.swing.JFrame {
 
+    ControladoraLogica controladoraLogica;
     /**
      * Creates new form Libros
      */
     public Libros() {
+        controladoraLogica = new ControladoraLogica();
         initComponents();
     }
 
@@ -27,7 +35,7 @@ public class Libros extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        panelLibros = new javax.swing.JPanel();
         bttAgregarLibro = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -40,7 +48,7 @@ public class Libros extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setPreferredSize(new java.awt.Dimension(800, 600));
+        panelLibros.setPreferredSize(new java.awt.Dimension(800, 600));
 
         bttAgregarLibro.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         bttAgregarLibro.setText("Agregar Libro");
@@ -55,25 +63,25 @@ public class Libros extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(tbLibros);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelLibrosLayout = new javax.swing.GroupLayout(panelLibros);
+        panelLibros.setLayout(panelLibrosLayout);
+        panelLibrosLayout.setHorizontalGroup(
+            panelLibrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelLibrosLayout.createSequentialGroup()
                 .addGap(44, 44, 44)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(panelLibrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelLibrosLayout.createSequentialGroup()
                         .addComponent(bttAgregarLibro)
                         .addGap(18, 18, 18)
                         .addComponent(jButton2))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(56, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        panelLibrosLayout.setVerticalGroup(
+            panelLibrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelLibrosLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelLibrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bttAgregarLibro)
                     .addComponent(jButton2))
                 .addGap(18, 18, 18)
@@ -86,13 +94,13 @@ public class Libros extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelLibros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelLibros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -113,8 +121,8 @@ public class Libros extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bttAgregarLibro;
     private javax.swing.JButton jButton2;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel panelLibros;
     private javax.swing.JTable tbLibros;
     // End of variables declaration//GEN-END:variables
 
@@ -133,5 +141,19 @@ public class Libros extends javax.swing.JFrame {
         
         // Asigna el modelo de tabla a la tabla correspondiente
         tbLibros.setModel(modelo);
+        
+        // Crea la lista de objetos que son traídos de la base de datos
+        List<Libro> libros = new ArrayList<>();
+        
+        try {
+            // Guarda dentro de la lista los libros traídos de la base de datos
+            libros = controladoraLogica.consultarLibros();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(panelLibros, "Error al traer datos de los libros");
+        }
+        
+        for (Libro lib: libros) {
+            System.out.println(lib.getTitulo() + " " + lib.getAutor());
+        }
     }
 }
