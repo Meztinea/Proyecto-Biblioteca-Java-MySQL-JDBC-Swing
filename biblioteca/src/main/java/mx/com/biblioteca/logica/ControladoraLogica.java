@@ -3,8 +3,11 @@ package mx.com.biblioteca.logica;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.sql.ResultSet;
 import mx.com.biblioteca.persistencia.ControladoraPersistencia;
 import mx.com.biblioteca.utilitarias.ConversorImagen;
+import java.util.List;
+import java.util.ArrayList;
 
 /**
  *
@@ -26,5 +29,27 @@ public class ControladoraLogica {
         
         // Envía el objeto a la capa de persistencia - Con el tipo de dato correcto
         controladoraPersistencia.guardarLibro(libro);
+    }
+    
+    public List<Libro> consultarLibros() throws SQLException {
+        List<Libro> libros = new ArrayList<>();
+        
+        // Recibe un objeto de tipo Resulset
+        ResultSet rs = controladoraPersistencia.consultarLibros();
+        
+        // Cambia los datos a tipo objeto "Libro" y almacena en un ArrayList
+        while (rs.next()) {
+            Libro libro = new Libro();
+            
+            libro.setId(rs.getInt("id"));
+            libro.setTitulo(rs.getString("titulo"));
+            libro.setAutor(rs.getString("autor"));
+            libro.setEditorial(rs.getString("editorial"));
+            libro.setEjemplaresDisponibles(rs.getInt("ejemplaresDisponibles"));
+            
+            libros.add(libro);
+        }
+        
+        return libros;
     }
 }
