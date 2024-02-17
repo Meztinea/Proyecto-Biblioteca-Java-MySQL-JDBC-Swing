@@ -1,12 +1,14 @@
 
 package mx.com.biblioteca.persistencia;
 
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import mx.com.biblioteca.logica.Libro;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 /**
  *
@@ -56,5 +58,30 @@ public class LibroP {
         pstmt.execute();
         pstmt.close();
         conexionBD.close();
+    }
+    
+    public static byte[] consultarPortadaLibro(int id) throws SQLException {
+        byte[] portada = {};
+        
+        Connection conexionBD = new ConexionBD().crearConexion();
+        
+        // Consulta en la base de datos la info de la portada
+        String sql = "SELECT portada FROM libros WHERE id = ?";
+        PreparedStatement pstmt = conexionBD.prepareStatement(sql);
+        pstmt.setInt(1, id);
+        ResultSet rs = pstmt.executeQuery();
+        
+        // Convierte el resultado en un arreglo de tipo byte
+        if (rs.next()) {
+            Blob blob = rs.getBlob("portada");
+            
+            if (blob != null) {
+                portada = blob.getBytes(1, (int) blob.length());
+                // Aquí puedes procesar o imprimir los bytes según tus necesidades
+                System.out.println(Arrays.toString(portada));
+            }
+        }
+        
+        return portada;
     }
 }
