@@ -3,11 +3,10 @@ package mx.com.biblioteca.logica;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.sql.ResultSet;
 import mx.com.biblioteca.persistencia.ControladoraPersistencia;
 import mx.com.biblioteca.utilitarias.ConversorImagen;
 import java.util.List;
-import java.util.ArrayList;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -34,4 +33,16 @@ public class ControladoraLogica {
     public List<Libro> consultarLibros() throws SQLException {
         return controladoraPersistencia.consultarLibros();
     }
+    
+    public ImageIcon consultarPortada(int id) throws SQLException, IOException {
+        
+        // Consultar datos a persistencia - se recibe un arreglo de bytes
+        byte[] bytesPortada = controladoraPersistencia.consultarPortada(id);
+        
+        // Llamar al conversor de imagen
+        ImageIcon portada = ConversorImagen.convertirBytesAImagen(bytesPortada);
+
+        return portada;
+    }
+    
 }

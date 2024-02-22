@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import mx.com.biblioteca.logica.Libro;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 /**
  *
@@ -77,11 +76,11 @@ public class LibroP {
             
             if (blob != null) {
                 portada = blob.getBytes(1, (int) blob.length());
-                // Aquí puedes procesar o imprimir los bytes según tus necesidades
-                System.out.println(Arrays.toString(portada));
             }
         }
         
+        pstmt.close();
+        conexionBD.close();
         return portada;
     }
 }
