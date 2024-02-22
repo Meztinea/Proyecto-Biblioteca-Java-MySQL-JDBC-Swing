@@ -20,4 +20,8 @@ public class ControladoraPersistencia {
     public void guardarLibro(Libro libro) throws SQLException {
         libroP.guardar(libro);
     }
+    
+    public byte[] consultarPortada(int id) throws SQLException {
+        return LibroP.consultarPortadaLibro(id);
+    }
 }
